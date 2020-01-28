@@ -1,0 +1,16 @@
+{
+  "name": "webprog-questionnaire-engine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dig/webprog-questionnaire-engine.git"
+  },
+  "author": "up885013",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dig/webprog-questionnaire-engine/issues"
+  },
+  "homepage": "https://github.com/dig/webprog-questionnaire-engine#readme"
+}
