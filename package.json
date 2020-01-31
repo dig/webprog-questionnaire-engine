@@ -3,6 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
+  "scripts": {
+    "dev": "cross-env PORT=8080 DEV=true node src/index.js",
+    "develop": "node run dev",
+    "prod": "node src/index.js",
+    "production": "npm run prod",
+    "start": "npm run prod"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dig/webprog-questionnaire-engine.git"
@@ -12,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/dig/webprog-questionnaire-engine/issues"
   },
-  "homepage": "https://github.com/dig/webprog-questionnaire-engine#readme"
+  "homepage": "https://github.com/dig/webprog-questionnaire-engine#readme",
+  "dependencies": {
+    "cross-env": "^7.0.0",
+    "express": "^4.17.1"
+  }
 }
