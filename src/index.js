@@ -1,21 +1,12 @@
-'use strict';
-
 const express = require('express'),
-      Log = require('./log');
+      path = require('path');
 
 const port = process.env.PORT || 80;
-const isDev = process.env.DEV || false;
-
 const app = express();
-const logger = new Log(isDev);
 
-app.use(express.static('public'));
-logger.info('Serving /public.', true);
+app.use(express.static(path.join(__dirname, '../public')));
+app.get('*', (req, res) => res.sendFile(path.join(__dirname, '../public/index.html')));
+console.log('[EXPRESS] Serving /public.');
 
 app.listen(port);
-logger.info(`Listening on port ${port}.`);
-
-module.exports = {
-  app,
-  logger
-};
+console.log(`[EXPRESS] Listening on port ${port}.`);
