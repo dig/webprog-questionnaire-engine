@@ -35,3 +35,30 @@ header > .logo {
 header > .logo > img {
   height: 40px;
 }
+
+.notfound {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.notfound > button {
+  margin-top: 10px;
+}
+
+button {
+  width: 100px;
+  height: 34px;
+  background-color: #348aca;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: .9rem;
+  outline: none;
+  float: left;
+  cursor: pointer;
+  border-radius: 0;
+  -webkit-appearance: none;
+}

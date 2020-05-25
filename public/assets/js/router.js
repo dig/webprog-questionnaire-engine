@@ -13,7 +13,7 @@ class Router {
     window.addEventListener('popstate', event => this.handleRouteChange(event.target.location.pathname));
   }
 
-  add = (url, template, query = '#root', component = null) => {
+  add = (url, template, component = null, query = '#root') => {
     this._routes.push({
       url: url,
       template: template,
@@ -61,8 +61,6 @@ class Router {
         data = this._cache[nextRoute.template];
       } else {
         let url = `/components/${nextRoute.template}`;
-        if (nextRoute.component != null)
-          url = `${url}/${nextRoute.template}.html`;
 
         const response = await fetch(url);
         data = await response.text();
@@ -114,6 +112,8 @@ class Router {
 
         this._components[nextRoute.query].push(newCom);
       }
+    } else {
+      console.error(`Unable to find route for ${route}.`);
     }
   };
 }

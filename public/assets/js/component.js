@@ -1,7 +1,7 @@
 class Component {
-  constructor(props = []) {
+  constructor(params = []) {
     this._isMounted = false;
-    this._props = props;
+    this._params = params;
   }
 
   componentDidMount = () => {};
