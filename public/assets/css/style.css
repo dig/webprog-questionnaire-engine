@@ -132,7 +132,7 @@ button {
   padding: 15px;
 }
 
-.notfound {
+.notfound, .main, .login {
   height: 100%;
   display: flex;
   justify-content: center;
@@ -144,18 +144,23 @@ button {
   margin-top: 10px;
 }
 
-.main {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
 .main > * {
   margin-bottom: 10px;
 }
 
 .main > img {
   height: 100px;
+}
+
+.login > .panel > *:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.login > .panel {
+  background-color: rgba(68,70,79,.5);
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
