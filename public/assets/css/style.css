@@ -7,10 +7,68 @@
 
 html, body {
   background-color: #2f323b;
-  font-family: Roboto, sans-serif;
+  font-family: sans-serif;
   height: 100%;
   width: 100%;
   color: #fff;
+}
+
+.col-1 {
+  width: 8.33%;
+}
+
+.col-2 {
+  width: 16.66%;
+}
+
+.col-3 {
+  width: 25%;
+}
+
+.col-4 {
+  width: 33.33%;
+}
+
+.col-5 {
+  width: 41.66%;
+}
+
+.col-6 {
+  width: 50%;
+}
+
+.col-7 {
+  width: 58.33%;
+}
+
+.col-8 {
+  width: 66.66%;
+}
+
+.col-9 {
+  width: 75%;
+}
+
+.col-10 {
+  width: 83.33%;
+}
+
+.col-11 {
+  width: 91.66%;
+}
+
+.col-12 {
+  width: 100%;
+}
+
+[class*="col-"] {
+  float: left;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
 }
 
 header {
@@ -36,16 +94,18 @@ header > .logo > img {
   height: 40px;
 }
 
-.notfound {
-  height: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+#root {
+  height: calc(100vh - 78px);
 }
 
-.notfound > button {
-  margin-top: 10px;
+@media screen and (max-width: 260px) {
+  header > .logo {
+    display: none;
+  }
+
+  header > .title {
+    display: none;
+  }
 }
 
 button {
@@ -61,4 +121,41 @@ button {
   cursor: pointer;
   border-radius: 0;
   -webkit-appearance: none;
+}
+
+.dashboard .card {
+  background-color: rgba(68,70,79,.5);
+  padding: 15px;
+}
+
+.dashboard .col-4 {
+  padding: 15px;
+}
+
+.notfound {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.notfound > button {
+  margin-top: 10px;
+}
+
+.main {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.main > * {
+  margin-bottom: 10px;
+}
+
+.main > img {
+  height: 100px;
 }

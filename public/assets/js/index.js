@@ -1,5 +1,5 @@
 const router = new Router();
 
 // routes
-router.add('/', 'dashboard.html');
+router.add('/', 'main/main.html', Main);
 router.add('*', 'notfound/notfound.html', NotFound);
