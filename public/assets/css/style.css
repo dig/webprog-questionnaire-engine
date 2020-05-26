@@ -98,6 +98,12 @@ header > .logo > img {
   height: 40px;
 }
 
+header > .account {
+  float: right;
+  padding-right: 15px;
+  cursor: pointer;
+}
+
 #root {
   height: calc(100vh - 78px);
 }

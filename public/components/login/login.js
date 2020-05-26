@@ -12,10 +12,9 @@ class Login extends Component {
   }
 
   handleOnSuccess = (e) => {
-    console.log(e);
+    auth.set(e.Ut.Bd, e.wc.id_token);
+    router.push('/');
   }
 
-  handleOnFailure = (e) => {
-    console.error(e);
-  }
+  handleOnFailure = (e) => console.error(e);
 }

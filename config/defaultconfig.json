@@ -1,7 +1,7 @@
 {
   "oauth": {
     "google": {
-      "secret": ""
+      "clientID": ""
     }
   }
 }
