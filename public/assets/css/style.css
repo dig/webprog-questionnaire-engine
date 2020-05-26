@@ -174,3 +174,16 @@ button {
   align-items: center;
   flex-direction: column;
 }
+
+.create {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.create > .panel {
+  width: 970px;
+  background-color: rgba(68,70,79,.5);
+  padding: 20px;
+}
