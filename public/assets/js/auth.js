@@ -1,10 +1,11 @@
-const GOOGLE_CLIENT_ID = '527156018024-2nt5kuj4jqsrie7r4dhnrdjn6d239bor.apps.googleusercontent.com';
+const GOOGLE_CLIENT_ID = '527156018024-2nt5kuj4jqsrie7r4dhnrdjn6d239bor.apps.googleusercontent.com',
+      userKey = '__user';
 
 class Auth {
   constructor() {
     this.auth2 = null;
-    this.authenticated = false;
-    this.user = null;
+    this.user = this.getLocalStorage();
+    this.authenticated = this.user != null;
     this.signInCB = null;
 
     window.addEventListener('load', () => gapi.load('auth2', this.initOAuth));
@@ -16,7 +17,7 @@ class Auth {
       scope: 'profile'
     });
 
-    this.auth2.isSignedIn.listen(this.signinChanged);
+    // this.auth2.isSignedIn.listen(this.signinChanged);
     this.auth2.currentUser.listen(this.userChanged);
 
     if (this.auth2.isSignedIn.get()) {
@@ -24,26 +25,36 @@ class Auth {
     }
   }
 
-  signinChanged = (val) => this.authenticated = val;
+  setLocalStorage = (user) => localStorage.setItem(userKey, this.user);
+  getLocalStorage = () => {
+    const user = localStorage.getItem(userKey);
+    if (user)
+      return user;
+    return null;
+  }
+
   userChanged = (user) => {
     this.user = user;
+    this.setLocalStorage(this.user);
 
-    // header
-    if (this.authenticated) {
+    if (this.user) {
+      this.authenticated = true;
+  
       let accountItem = document.querySelector('header > .item.account');
       accountItem.textContent = this.getUsername();
-    }
-
-    if (this.signInCB != null) {
-      this.signInCB();
+  
+      if (this.signInCB != null) {
+        this.signInCB();
+      }
     }
   }
 
   requestSignIn = (signInCB = null) => {
     this.signInCB = signInCB;
     this.auth2.signIn();
-  };
-  isAuthenticated = () => this.accessToken != null && this.authenticated;
+  }
+
+  isAuthenticated = () => this.authenticated;
   getUsername = () => this.user.Ut.Bd;
   getAccessToken = () => this.user.wc.id_token;
 }
