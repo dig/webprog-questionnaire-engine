@@ -1,3 +1,0 @@
-class Create extends Component {
-  
-}

@@ -13,10 +13,9 @@ class Router {
     window.addEventListener('popstate', event => this.handleRouteChange(event.target.location.pathname));
   }
 
-  add = (url, template, component = null, query = '#root') => {
+  add = (url, component = null, query = '#root') => {
     this._routes.push({
       url: url,
-      template: template,
       query: query,
       component: component
     });
@@ -55,63 +54,11 @@ class Router {
 
     // if we found a route
     if (nextRoute) {
-      // attempt to get template html
-      let data = '';
-      if (this._cache.includes(nextRoute.template)) {
-        data = this._cache[nextRoute.template];
-      } else {
-        let url = `/components/${nextRoute.template}`;
-
-        const response = await fetch(url);
-        data = await response.text();
-
-        // cache result for faster loading
-        this._cache[nextRoute.template] = data;
-      }
-
-      // unmount old components
-      if (this._components[nextRoute.query]) {
-        for (const com of this._components[nextRoute.query]) {
-          if (com._isMounted) {
-            com.componentDidUnmount();
-            com._isMounted = false;
-          }
-        }
-
-        this._components[nextRoute.query] = [];
-      }
+      let newDiv = document.createElement(nextRoute.component); 
 
       // replace with new component html
       const root = document.querySelector(nextRoute.query);
-      root.innerHTML = data;
-
-      // mount
-      if (nextRoute.component != null) {
-        const urlStructure = nextRoute.url.match(ROUTE_STRUCTURE_REGEX);
-        const routeStructure = route.match(ROUTE_STRUCTURE_REGEX);
-
-        const props = {};
-        if (urlStructure != null && routeStructure != null) {
-          for (const i in urlStructure) {
-            const urlParam = urlStructure[i];
-            const routeParam = routeStructure[i];
-    
-            if (urlParam.startsWith(':')) {
-              props[urlParam.replace(':', '')] = routeParam.replace('/', '');
-            }
-          }
-        }
-
-        if (!this._components[nextRoute.query])
-          this._components[nextRoute.query] = [];
-
-        // create new component
-        let newCom = new nextRoute.component(props);
-        newCom.componentDidMount();
-        newCom._isMounted = true;
-
-        this._components[nextRoute.query].push(newCom);
-      }
+      root.innerHTML = newDiv.outerHTML;
     } else {
       console.error(`Unable to find route for ${route}.`);
     }
