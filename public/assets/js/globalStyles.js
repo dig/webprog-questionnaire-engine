@@ -158,6 +158,10 @@ const GlobalStyles = {
         flex-direction: column;
       }
       
+      img {
+        height: 50px;
+        cursor: pointer;
+      }
     </style>
   `,
 

@@ -1,53 +1,49 @@
-const accessTokenKey = '__accessToken',
-      usernameKey = '__username';
+const GOOGLE_CLIENT_ID = '527156018024-2nt5kuj4jqsrie7r4dhnrdjn6d239bor.apps.googleusercontent.com';
 
 class Auth {
   constructor() {
+    this.auth2 = null;
     this.authenticated = false;
+    this.user = null;
+    this.signInCB = null;
 
-    this.username = null;
-    this.accessToken = null;
-
-    this.loadStorage();
+    window.addEventListener('load', () => gapi.load('auth2', this.initOAuth));
   }
 
-  loadStorage() {
-    const username = localStorage.getItem(usernameKey);
-    const accessToken = localStorage.getItem(accessTokenKey);
+  initOAuth = () => {
+    this.auth2 = gapi.auth2.init({
+      client_id: GOOGLE_CLIENT_ID,
+      scope: 'profile'
+    });
 
-    if (username && accessToken) {
-      this.set(username, accessToken);
+    this.auth2.isSignedIn.listen(this.signinChanged);
+    this.auth2.currentUser.listen(this.userChanged);
+
+    if (this.auth2.isSignedIn.get()) {
+      this.auth2.signIn();
     }
   }
 
-  set(username, accessToken) {
-    this.username = username;
-    this.accessToken = accessToken;
+  signinChanged = (val) => this.authenticated = val;
+  userChanged = (user) => {
+    this.user = user;
 
-    localStorage.setItem(usernameKey, username);
-    localStorage.setItem(accessTokenKey, accessToken);
-
-    this.authenticated = true;
-    this.onAuth();
-  }
-
-  onAuth() {
     // header
-    let accountItem = document.querySelector('header > .item.account');
-    if (this.isAuthenticated()) {
-      accountItem.textContent = this.username;
+    if (this.authenticated) {
+      let accountItem = document.querySelector('header > .item.account');
+      accountItem.textContent = this.getUsername();
+    }
+
+    if (this.signInCB != null) {
+      this.signInCB();
     }
   }
 
-  isAuthenticated() {
-    return this.accessToken != null && this.authenticated;
-  }
-
-  getUsername() {
-    return this.username;
-  }
-
-  getAccessToken() {
-    return this.accessToken;
-  }
+  requestSignIn = (signInCB = null) => {
+    this.signInCB = signInCB;
+    this.auth2.signIn();
+  };
+  isAuthenticated = () => this.accessToken != null && this.authenticated;
+  getUsername = () => this.user.Ut.Bd;
+  getAccessToken = () => this.user.wc.id_token;
 }

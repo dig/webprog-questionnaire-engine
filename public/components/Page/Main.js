@@ -20,6 +20,8 @@ class Main extends HTMLElement {
 
     if (auth.isAuthenticated())
       button.textContent = 'Create';
+
+    console.log(auth.isAuthenticated());
   }
 
   handleLoginClick = () => router.push(auth.isAuthenticated() ? '/create' : '/login');

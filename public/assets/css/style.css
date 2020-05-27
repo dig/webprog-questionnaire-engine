@@ -50,7 +50,7 @@ header > .account {
   cursor: pointer;
 }
 
-@media screen and (max-width: 260px) {
+@media screen and (max-width: 360px) {
   header > .logo {
     display: none;
   }
