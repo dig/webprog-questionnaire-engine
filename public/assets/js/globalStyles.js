@@ -15,6 +15,10 @@ const GlobalStyles = {
         width: 100%;
         color: #fff;
       }
+
+      #root {
+        height: calc(100vh - 78px);
+      }
       
       .col-1 {
         width: 8.33%;
@@ -72,57 +76,6 @@ const GlobalStyles = {
         content: "";
         clear: both;
         display: table;
-      }
-
-      #root {
-        height: calc(100vh - 78px);
-      }
-    </style>
-  `,
-
-  header: `
-    <style>
-      header {
-        width: 100%;
-        height: 70px;
-        background-color: #348aca;
-        border-bottom: solid 8px #256ea4;
-      }
-      
-      header > .item {
-        float: left;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      
-      header > .logo {
-        margin: 0 25px;
-      }
-      
-      header > .logo, header > .title {
-        user-select: none;
-      }
-      
-      header > .logo > img {
-        height: 40px;
-      }
-      
-      header > .account {
-        float: right;
-        padding-right: 15px;
-        cursor: pointer;
-      }
-      
-      @media screen and (max-width: 260px) {
-        header > .logo {
-          display: none;
-        }
-      
-        header > .title {
-          display: none;
-        }
       }
     </style>
   `,

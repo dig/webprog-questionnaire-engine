@@ -1,12 +1,6 @@
 const auth = new Auth();
 const router = new Router();
 
-// global styles
-let body = document.querySelector('body');
-for (const style of ['main', 'header']) {
-  body.innerHTML += GlobalStyles[style];
-}
-
 // routes
 router.add('/', 'page-main');
 router.add('/login', 'page-login');
