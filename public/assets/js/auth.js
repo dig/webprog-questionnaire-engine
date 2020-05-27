@@ -17,7 +17,7 @@ class Auth {
       scope: 'profile'
     });
 
-    // this.auth2.isSignedIn.listen(this.signinChanged);
+    this.auth2.isSignedIn.listen(this.signinChanged);
     this.auth2.currentUser.listen(this.userChanged);
 
     if (this.auth2.isSignedIn.get()) {
@@ -31,6 +31,14 @@ class Auth {
     if (user)
       return user;
     return null;
+  }
+
+  signinChanged = (val) => {
+    if (!val) {
+      localStorage.removeItem(userKey);
+    } else {
+      this.setLocalStorage(this.user);
+    }
   }
 
   userChanged = (user) => {
