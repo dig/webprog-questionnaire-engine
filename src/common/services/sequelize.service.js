@@ -1,8 +1,12 @@
-const { Sequelize } = require('sequelize');
+const { Sequelize } = require('sequelize'),
+      path = require('path');
 
 const sequelize = new Sequelize({
   dialect: 'sqlite',
-  storage: '../../../data/database.sqlite',
+  storage: path.join(__dirname, '../../../data/database.sqlite'),
+  host: 'localhost',
+  username: 'root',
+  password: 'root',
   logging: false,
 });
 

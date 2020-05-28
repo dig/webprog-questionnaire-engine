@@ -28,6 +28,7 @@
     "http-status-codes": "^1.4.0",
     "sequelize": "^5.21.11",
     "simple-google-openid": "^0.3.0",
-    "sqlite3": "^4.2.0"
+    "sqlite3": "^4.2.0",
+    "uuid": "^8.1.0"
   }
 }

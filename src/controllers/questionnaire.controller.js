@@ -1,5 +1,7 @@
 const HTTP = require('http-status-codes'),
-            { body, validationResult } = require('express-validator');
+            { body, validationResult } = require('express-validator'),
+            { v4 } = require('uuid'),
+            QuestionnaireModel = require('../models/questionnaire.model');
 
 exports.validate = (method) => {
   switch (method) {
@@ -22,7 +24,18 @@ exports.createAsJSON = async (req, res) => {
   if (!errors.isEmpty()) {
     return res.status(HTTP.UNPROCESSABLE_ENTITY).json({ errors: errors.array() });
   } else {
-    console.log(req.user);
-    return res.status(HTTP.OK).send();
+    try {
+      await QuestionnaireModel.create({
+        uuid: v4(),
+        user_id: req.user.id,
+        name: req.body.name,
+        questions: JSON.stringify(req.body.questions)
+      });
+
+      return res.status(HTTP.OK).send();
+    } catch (error) {
+      console.error(error);
+      return res.status(HTTP.INTERNAL_SERVER_ERROR).send();
+    }
   }
 };
