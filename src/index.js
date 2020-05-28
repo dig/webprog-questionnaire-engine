@@ -1,11 +1,13 @@
 const config = require('../config/config.json'),
       express = require('express'),
       path = require('path'),
+      bodyParser = require('body-parser'),
       GoogleAuth = require('simple-google-openid');
 
 const port = process.env.PORT || 8080;
 const app = express();
 
+app.use(bodyParser.json()); // application/json
 app.use(GoogleAuth(config.oauth.google.clientID));
 
 // routes

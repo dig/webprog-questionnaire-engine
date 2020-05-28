@@ -2,8 +2,9 @@ const GoogleAuth = require('simple-google-openid'),
       QuestionnaireController = require('../controllers/questionnaire.controller');
 
 exports.routesConfig = function (app) {
-  app.get('/api/questionnaire', [
+  app.put('/api/questionnaire/json', [
     GoogleAuth.guardMiddleware(),
-    QuestionnaireController.questionnaires
+    QuestionnaireController.validate('createAsJSON'),
+    QuestionnaireController.createAsJSON
   ]);
 };

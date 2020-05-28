@@ -96,6 +96,48 @@ const GlobalStyles = {
         border-radius: 0;
         -webkit-appearance: none;
       }
+
+      button.light {
+        border: 1px solid #616779;
+        background: transparent;
+        color: #949ba2;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+
+      button.light:hover {
+        color: #fff;
+        background: rgba(97,103,121,.3);
+      }
+
+      .button-group {
+        float: left;
+      }
+
+      .button-group > *:not(:first-child) {
+        margin-left: 5px;
+      }
+    </style>
+  `,
+
+  input: `
+    <style>
+      input {
+        display: block;
+        width: 100%;
+        height: 34px;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        background-image: none;
+        color: #949ba2;
+        border: none;
+        box-shadow: none;
+        -webkit-transition: none;
+        transition: none;
+        background-color: #494b54;
+        border-radius: 0 !important;
+      }
     </style>
   `,
 
@@ -178,6 +220,14 @@ const GlobalStyles = {
         width: 970px;
         background-color: rgba(68,70,79,.5);
         padding: 20px;
+      }
+
+      .panel > *:not(:first-child) {
+        margin-top: 15px;
+      }
+
+      .form-group > input {
+        margin-top: 3px;
       }
     </style>
   `
