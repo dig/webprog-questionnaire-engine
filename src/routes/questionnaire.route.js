@@ -9,7 +9,6 @@ exports.routesConfig = function (app) {
   ]);
 
   app.get('/api/questionnaire/:uuid', [
-    GoogleAuth.guardMiddleware(),
     QuestionnaireController.get
   ]);
 };

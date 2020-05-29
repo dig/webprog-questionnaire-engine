@@ -43,6 +43,7 @@ class Questionnaire extends HTMLElement {
             let group = cloned.querySelectorAll('.form-group');
             group = group[0];
             group.setAttribute('question-id', question.id);
+            group.setAttribute('question-type', question.type);
 
             // title
             const title = cloned.getElementById('title');
@@ -64,10 +65,30 @@ class Questionnaire extends HTMLElement {
             panel.appendChild(cloned);
           }
         }
+
+        // submit
+        const submitBtn = document.createElement('button');
+        submitBtn.classList.add('light');
+        submitBtn.textContent = 'Submit';
+        submitBtn.addEventListener('click', this.handleSubmitClick);
+
+        panel.appendChild(submitBtn);
+      } else {
+        router.push('/');
       }
     } catch (error) {
-      // router.push('/');
-      console.error(error);
+      router.push('/');
+    }
+  }
+
+  handleSubmitClick = () => {
+    const questions = this.shadowRoot.querySelectorAll('.form-group');
+
+    for (const question of questions) {
+      const id = question.getAttribute('question-id');
+      const type = question.getAttribute('question-type');
+
+
     }
   }
 }

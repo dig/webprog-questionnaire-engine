@@ -230,7 +230,7 @@ const GlobalStyles = {
         margin-top: 15px;
       }
 
-      .form-group > input {
+      .form-group > input, .form-group > select {
         margin-top: 3px;
       }
     </style>
