@@ -7,4 +7,9 @@ exports.routesConfig = function (app) {
     QuestionnaireController.validate('createAsJSON'),
     QuestionnaireController.createAsJSON
   ]);
+
+  app.get('/api/questionnaire/:uuid', [
+    GoogleAuth.guardMiddleware(),
+    QuestionnaireController.get
+  ]);
 };

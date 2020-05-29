@@ -5,6 +5,7 @@ const router = new Router();
 router.add('/', 'page-main');
 router.add('/login', 'page-login');
 router.add('/create', 'page-create');
+router.add('/questionnaire/:uuid', 'page-questionnaire')
 router.add('*', 'page-notfound');
 
 // header

@@ -80,12 +80,53 @@
       </section>
     </template>
 
+    <template id="questionnaire">
+      <section>
+        <div class="panel">      
+          <h4 id="name">Loading</h4>
+        </div>
+      </section>
+
+      <template id="questionnaire-text">
+        <div class="form-group">
+          <label id="title">Name</label>
+          <input id="input" type="text" value="">
+        </div>
+      </template>
+
+      <template id="questionnaire-number">
+        <div class="form-group">
+          <label id="title">Name</label>
+          <input id="input" type="number" value="">
+        </div>
+      </template>
+
+      <template id="questionnaire-single-select">
+        <div class="form-group">
+          <label id="title">Name</label>
+
+          <select>
+          </select>
+        </div>
+      </template>
+
+      <template id="questionnaire-multi-select">
+        <div class="form-group">
+          <label id="title">Name</label>
+
+          <select multiple>
+          </select>
+        </div>
+      </template>
+    </template>
+
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
     <script type="text/javascript" src="/components/Page/Create.js"></script>
     <script type="text/javascript" src="/components/Page/Login.js"></script>
     <script type="text/javascript" src="/components/Page/Main.js"></script>
     <script type="text/javascript" src="/components/Page/NotFound.js"></script>
+    <script type="text/javascript" src="/components/Page/Questionnaire.js"></script>
 
     <script type="text/javascript" src="/assets/js/auth.js"></script>
     <script type="text/javascript" src="/assets/js/globalStyles.js"></script>

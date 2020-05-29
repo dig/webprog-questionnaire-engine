@@ -122,7 +122,7 @@ const GlobalStyles = {
 
   input: `
     <style>
-      input {
+      input, select {
         display: block;
         width: 100%;
         height: 34px;
@@ -137,6 +137,10 @@ const GlobalStyles = {
         transition: none;
         background-color: #494b54;
         border-radius: 0 !important;
+      }
+
+      select[multiple] {
+        height: 100px;
       }
     </style>
   `,

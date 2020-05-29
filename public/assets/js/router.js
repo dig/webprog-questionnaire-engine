@@ -1,6 +1,6 @@
 const ROUTE_PARAM_REGEX = /:(\w+)(?!\w)/g;
 const ROUTE_SLASH_REGEX = /\/(\w+)(?!\w)/g;
-const ROUTE_STRUCTURE_REGEX = /(\/|:)(\w+)(?!\w)/g;
+const ROUTE_STRUCTURE_REGEX = /(\/|:)([a-zA-Z0-9\-]+)(?!\w)/g;
 
 class Router {
   constructor() {
@@ -55,6 +55,20 @@ class Router {
     // if we found a route
     if (nextRoute) {
       let newDiv = document.createElement(nextRoute.component); 
+      
+      const urlStructure = nextRoute.url.match(ROUTE_STRUCTURE_REGEX);
+      const routeStructure = route.match(ROUTE_STRUCTURE_REGEX);
+
+      if (urlStructure != null && routeStructure != null) {
+        for (const i in urlStructure) {
+          const urlParam = urlStructure[i];
+          const routeParam = routeStructure[i];
+  
+          if (urlParam.startsWith(':')) {
+            newDiv.setAttribute(urlParam.replace(':', ''), routeParam.replace('/', ''));
+          }
+        }
+      }
 
       // replace with new component html
       const root = document.querySelector(nextRoute.query);

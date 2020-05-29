@@ -25,11 +25,11 @@ class Auth {
     }
   }
 
-  setLocalStorage = (user) => localStorage.setItem(userKey, this.user);
+  setLocalStorage = (user) => localStorage.setItem(userKey, JSON.stringify(this.user));
   getLocalStorage = () => {
     const user = localStorage.getItem(userKey);
     if (user)
-      return user;
+      return JSON.parse(user);
     return null;
   }
 

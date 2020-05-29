@@ -39,3 +39,21 @@ exports.createAsJSON = async (req, res) => {
     }
   }
 };
+
+exports.get = async (req, res) => {
+  if (req.params.uuid) {
+    const questionnaire = await QuestionnaireModel.findOne({
+      attributes: ['name', 'questions'],
+      where: {
+        uuid: req.params.uuid
+      }
+    });
+  
+    if (questionnaire)
+      return res.status(HTTP.OK).send(questionnaire);
+
+    return res.status(HTTP.NOT_FOUND).send();
+  }
+
+  return res.status(HTTP.UNPROCESSABLE_ENTITY).send();
+};
