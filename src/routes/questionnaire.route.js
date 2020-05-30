@@ -25,4 +25,9 @@ exports.routesConfig = function (app) {
     GoogleAuth.guardMiddleware(),
     QuestionnaireController.delete
   ]);
+
+  app.get('/api/questionnaire/:uuid/response', [
+    GoogleAuth.guardMiddleware(),
+    QuestionnaireController.getResponse
+  ]);
 };

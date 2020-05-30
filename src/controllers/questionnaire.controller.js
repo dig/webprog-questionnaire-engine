@@ -111,3 +111,28 @@ exports.delete = async (req, res) => {
 
   return res.status(HTTP.UNPROCESSABLE_ENTITY).send();
 };
+
+exports.getResponse = async (req, res) => {
+  if (req.params.uuid) {
+    const questionnaire = await QuestionnaireModel.findOne({
+      where: {
+        uuid: req.params.uuid,
+        user_id: req.user.id
+      }
+    });
+
+    if (questionnaire) {
+      const questionnaires = await QuestionnaireResponseModel.findAll({
+        where: {
+          uuid: req.params.uuid,
+        }
+      });
+  
+      return res.status(HTTP.OK).send(questionnaires);
+    }
+
+    return res.status(HTTP.UNAUTHORIZED).send();
+  }
+
+  return res.status(HTTP.UNPROCESSABLE_ENTITY).send();
+};

@@ -47,7 +47,7 @@ class AccountQuestionnaires extends HTMLElement {
 
           // download
           const downloadBtn = cloned.getElementById('download');
-          downloadBtn.addEventListener('click', () => this.handleDownloadClick(questionnaire.uuid));
+          downloadBtn.addEventListener('click', (e) => this.handleDownloadClick(questionnaire.uuid, e.srcElement));
 
           // delete
           const deleteBtn = cloned.getElementById('delete');
@@ -59,15 +59,32 @@ class AccountQuestionnaires extends HTMLElement {
         router.push('/');
       }
     } catch (error) {
-      console.error(error);
-      // router.push('/');
+      router.push('/');
     }
   }
 
   handleViewClick = (uuid) => router.push(`/questionnaire/${uuid}`);
   
-  handleDownloadClick = (uuid) => {
+  handleDownloadClick = async (uuid, element) => {
+    const response = await fetch(`/api/questionnaire/${uuid}/response`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${auth.getAccessToken()}`
+      },
+    });
 
+    if (response.ok) {
+      const data = await response.json();
+
+      const fileData = [];
+      for (const response of data) {
+        fileData.push(JSON.parse(response.response));
+      }
+
+      let file = new Blob([JSON.stringify(fileData)], {type: 'text/plain'});
+      element.href = URL.createObjectURL(file);
+      element.download = 'response.json';
+    }
   }
 
   handleDeleteClick = async (uuid) => {
