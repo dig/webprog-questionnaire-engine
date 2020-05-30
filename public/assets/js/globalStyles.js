@@ -245,5 +245,41 @@ const GlobalStyles = {
         color: #cb2d3e;
       }
     </style>
+  `,
+
+  componentAccountQuestionnaires: `
+    <style>
+      .dashboard .card {
+        background-color: rgba(68,70,79,.5);
+        padding: 15px;
+      }
+
+      .dashboard .col-4 {
+        padding: 15px;
+        min-width: 300px;
+      }
+
+      .buttons {
+        margin-top: 9px;
+      }
+
+      .buttons > * {
+        float: left;
+        width: 33.33%;
+        font-size: 0.8rem;
+        background-color: #2f323b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: 1px solid rgba(68,70,79,.5);
+      }
+
+      .buttons::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+    </style>
   `
 }

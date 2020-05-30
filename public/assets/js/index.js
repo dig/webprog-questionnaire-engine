@@ -7,6 +7,7 @@ router.add('/login', 'page-login');
 router.add('/create', 'page-create');
 router.add('/questionnaire/:uuid', 'page-questionnaire');
 router.add('/success', 'page-success');
+router.add('/questionnaires', 'page-accountquestionnaires');
 router.add('*', 'page-notfound');
 
 // header

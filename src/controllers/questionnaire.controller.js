@@ -84,3 +84,30 @@ exports.response = async (req, res) => {
 
   return res.status(HTTP.UNPROCESSABLE_ENTITY).send();
 };
+
+exports.userQuestionnaires = async (req, res) => {
+  const questionnaire = await QuestionnaireModel.findAll({
+    attributes: ['uuid', 'name'],
+    where: {
+      user_id: req.user.id
+    }
+  });
+
+  return res.status(HTTP.OK).send(questionnaire);
+};
+
+exports.delete = async (req, res) => {
+  if (req.params.uuid) {
+    const questionnaire = await QuestionnaireModel.findOne({
+      where: {
+        uuid: req.params.uuid,
+        user_id: req.user.id
+      }
+    });
+
+    await questionnaire.destroy();
+    return res.status(HTTP.OK).send();
+  }
+
+  return res.status(HTTP.UNPROCESSABLE_ENTITY).send();
+};
