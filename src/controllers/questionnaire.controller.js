@@ -1,7 +1,8 @@
 const HTTP = require('http-status-codes'),
             { body, validationResult } = require('express-validator'),
             { v4 } = require('uuid'),
-            QuestionnaireModel = require('../models/questionnaire.model');
+            QuestionnaireModel = require('../models/questionnaire.model'),
+            QuestionnaireResponseModel = require('../models/questionnaire.response.model');
 
 exports.validate = (method) => {
   switch (method) {
@@ -51,6 +52,32 @@ exports.get = async (req, res) => {
   
     if (questionnaire)
       return res.status(HTTP.OK).send(questionnaire);
+
+    return res.status(HTTP.NOT_FOUND).send();
+  }
+
+  return res.status(HTTP.UNPROCESSABLE_ENTITY).send();
+};
+
+exports.response = async (req, res) => {
+  if (req.params.uuid && req.body) {
+    const questionnaire = await QuestionnaireModel.findOne({
+      attributes: ['name', 'questions'],
+      where: {
+        uuid: req.params.uuid
+      }
+    });
+
+    if (questionnaire) {
+      const response = await QuestionnaireResponseModel.create({
+        uuid: req.params.uuid,
+        response: JSON.stringify(req.body)
+      });
+
+      if (response) {
+        return res.status(HTTP.OK).send();
+      }
+    }
 
     return res.status(HTTP.NOT_FOUND).send();
   }

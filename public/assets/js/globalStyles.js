@@ -234,5 +234,16 @@ const GlobalStyles = {
         margin-top: 3px;
       }
     </style>
+  `,
+
+  componentQuestionnaire: `
+    <style>
+      .errorMsg {
+        float: left;
+        clear: left;
+        display: inline;
+        color: #cb2d3e;
+      }
+    </style>
   `
 }

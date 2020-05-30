@@ -33,7 +33,7 @@ class Create extends HTMLElement {
   createJSON = async (object) => {
     if (object.name && object.questions) {
       try {
-        const response = await fetch('/api/questionnaire/json', {
+        const response = await fetch('/api/questionnaire', {
           method: 'PUT',
           headers: {
             'Authorization': `Bearer ${auth.getAccessToken()}`,
