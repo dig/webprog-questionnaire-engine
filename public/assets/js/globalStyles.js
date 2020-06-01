@@ -301,6 +301,12 @@ const GlobalStyles = {
         clear: both;
         display: table;
       }
+
+      @media screen and (max-width: 980px) {
+        .buttons > * {
+          height: 44px;
+        }
+      }
     </style>
   `
 }
