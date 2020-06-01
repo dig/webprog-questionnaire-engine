@@ -24,4 +24,10 @@ I chose SQLite as the database because its simple and easy to use. This project 
 I decided to go with a simple MVC layout on the backend because it's what is used in industries and is a good way to structure a project. I'm using a database connector called sequelize which is an ORM (Object Relational Mapping), this allows me to store and retrieve objects. This also comes built in with many prevent exploit checks such as SQL injection.
 
 ### Frontend
-For the frontend, I decided to use web components, shadowdom and my own router to achieve a SPA (Single Page Application). I would of used React but we are being marked on our own code. The router class handles all the URL states and parameters. The auth class handles authentication with google's oauth 2.0. There is a web component per page and is switched when the URL state changes. All the page html can be found in the index.html as templates.
+For the frontend, I decided to use web components, shadowdom and my own router to achieve a SPA (Single Page Application). I would of used React but we are being marked on our own code. All the page html can be found in the index.html as templates.
+
+#### Router
+The router class handles all the URL states and parameters. There is a web component per page and is switched when the URL state changes.
+
+#### Auth
+The auth class handles authentication with google's oauth 2.0.
