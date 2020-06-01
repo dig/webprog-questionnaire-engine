@@ -5,6 +5,12 @@
   outline: none;
 }
 
+@media screen and (max-width: 980px) {
+  * {
+    font-size: 1.5rem;
+  }
+}
+
 html, body {
   background-color: #2f323b;
   font-family: sans-serif;
@@ -57,5 +63,12 @@ header > .account {
 
   header > .title {
     display: none;
+  }
+}
+
+
+@media screen and (max-width: 980px) {
+  header {
+    height: 5vh;
   }
 }

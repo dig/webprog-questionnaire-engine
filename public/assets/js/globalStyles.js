@@ -117,6 +117,13 @@ const GlobalStyles = {
       .button-group > *:not(:first-child) {
         margin-left: 5px;
       }
+
+      @media screen and (max-width: 980px) {
+        button {
+          height: 48px;
+          width: 150px;
+        }
+      }
     </style>
   `,
 
@@ -141,6 +148,20 @@ const GlobalStyles = {
 
       select[multiple] {
         height: 100px;
+      }
+
+      @media screen and (max-width: 980px) {
+        select {
+          font-size: 1.3rem;
+        }
+
+        select[multiple] {
+          height: 300px;
+        }
+
+        input, select {
+          height: 58px;
+        }
       }
     </style>
   `,
@@ -221,7 +242,7 @@ const GlobalStyles = {
       }
       
       section > .panel {
-        width: 970px;
+        max-width: 970px;
         background-color: rgba(68,70,79,.5);
         padding: 20px;
       }
