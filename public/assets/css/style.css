@@ -40,6 +40,11 @@ header > .item {
 
 header > .logo {
   margin: 0 25px;
+  cursor: pointer;
+}
+
+header > .title {
+  cursor: pointer;
 }
 
 header > .logo, header > .title {

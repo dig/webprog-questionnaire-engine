@@ -13,3 +13,8 @@ router.add('*', 'page-notfound');
 // header
 let accountItem = document.querySelector('header > .item.account');
 accountItem.addEventListener('click', () => router.push(auth.isAuthenticated() ? '/questionnaires' : '/login'));
+
+let titleItem = document.querySelector('header > .item.title');
+let logoItem = document.querySelector('header > .item.logo');
+titleItem.addEventListener('click', () => router.push('/'));
+logoItem.addEventListener('click', () => router.push('/'));
